@@ -1,0 +1,24 @@
+
+2.soru:Geleneksel dosyalama sistemleriyle veritabanı yönetim sistemlerinin benzerlik ve farklılıklarını acıklayınız.
+cevap:BENZERLİKLERİ=ikisininde veri saklama işlemleri için kullanılması
+      FARKLILIKLARI=veri tabanı fazla miktarda veri akışı olan sistemlerde kullanılır.geleneksel dosyalama sistemi basit düzeyde ve fazla karmaşık olamayan veriler için kullanılır.
+3.soru:VTYS'nin geleneksel sisteme göre üstün özelliklerini açıklayın.
+cevap:VTYS basit bir web sayfasında ve çok büyük kuruluşların verilerinin tutulmasına kadar bir çok alanda kullanılır.Veri bütünlüğü sağlar.Kolay erişilir ve güvenilirdir.Gereksiz veri tekrarının oluşmasını engeller.
+4.soru:Veritabanın görevlerini açıklayarak kullanıldığı alanlara örnek veriniz.
+cevap:Veritabanı günümüzde hemen hemen her alanda kullanılır.Örneğin; müşteri bilgileri,ödemeler,taksitler,stoklar,öğrenci bilgilerinin verilerini tutmak için veritabanları kullanılır.
+5.soru:Tablo,satır ve sütun kavramlarını açıklayın.
+cevap: Tablo=veritabanında verilerin satır ve sütun halinde düzenlendiği yapı.
+       Sütun=tablodaki veri türünü temsil eden dikey yapı.her sütun belirli bir özelliği temsil eder.
+       Satır=tablodaki tek bir veri kaydını temsil eden yatay yapı.
+6.soru:Birincil anahtar ve yabancıl anahtar kavramlarını açıklayınız.
+cevap:Birincil anahtar=Bir tabloda her satırı benzersiz şekilde tanımlayan sütundur.tekil olmalı.tekrar edilemez ve boş bırakılamaz.
+      İkincil anahtar=Bir tabloda arama işlemlerini hızlandırmak için kullanılır.genellikle verileri filtrelemek için kullanılır.
+7.soru:Veritabanı kullancı türleri nelerdir?
+cevap:veritabanı yöneticisi(database administrator)
+     : uygulama programcısı
+     : sorgu dili kullanıcıları
+     : son kullanıcılar
+9.soru:Veritabanı ile VTYS'nin farkını açıklayınız.
+cevap:veritabanında veriler saklanır vtys ise veritabanını yönetir.
+10.soru:İlişkisel veri modelini açıklayınız.
+cevap:Bu modelde ortak özelliğe sahip veriler tablolar aracılığıyla saklanır.tablolar satır ve sütunlardan oluşur.ilişkiler kurulurken biribcil anahtarve ikincil anahtar kullanılır.
