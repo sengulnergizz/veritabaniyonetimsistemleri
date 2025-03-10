@@ -1,0 +1,44 @@
+--create database library; 
+use kutuphane
+create table uyeler(
+uyeNo int not null identity(1,1) Primary Key,
+uyeAdi nvarchar(50) not null,
+uyeSoyadi nvarchar(50) not null,
+eposta nvarchar(100),
+telefon nvarchar(100),
+cinsiyet char(2),
+adresNo int foreign key (adresNo) references adresler(adresNo)
+);
+
+create table Kutuphane_t(
+kutuphaneNo int not null identity (1,1) primary key,
+kutuphaneIsmi nvarchar(100),
+aciklama nvarchar(150),
+adresNo int foreign key(adresNo) references(adresNo)
+);
+
+use kutuphane
+create table Adresler(
+adresNo int not null identity(1,1) primary key,
+sehir nvarchar(100),
+cadde nvarchar(100),
+mahalle nvarchar(100),
+binaNo int,
+postakodu int,
+ulke nvarchar(100)
+);
+create table emanet(
+emanetNo int identity(1,1) primary key,
+emanetTarihi date,
+teslimTarihi date,
+uyeno int foreign key(uyeno) REFERENCES  uyeler(uyeNo),
+kutuphaneNo int foreign key(kutuphaneNo ) REFERENCES Kutuphane_t(kutuphaneNo),
+ISBN int foreign key (ISBN) references kitaplar(ISBN)
+);
+
+create table kitaplar(
+ISBN int not null primary key,
+sayfaSayisi int,
+kitapAdi nvarchar(100) not null,
+yayinTarihi nvarchar(100)
+);
