@@ -1,0 +1,65 @@
+--create database library;
+use kutuphane;
+create table kategoriler
+(
+kategoriNo int not null identity(1,1) primary key,
+kategoriAdi nvarchar(100) not null
+);
+
+create table yazarlar
+(
+yazarNo int not null identity(1,1) primary key,
+yazarAdi nvarchar(50) not null ,
+yazarSoyadi nvarchar(50) not null,
+);
+
+create table Adresler(
+adresNo int not null identity(1,1) primary key,
+sehir nvarchar(100),
+cadde nvarchar(100),
+mahalle nvarchar(100),
+binaNo int,
+postakodu int,
+ulke nvarchar(100)
+);
+
+use kutuphane;
+create table kitaplar(
+ISBN int not null primary key,
+sayfaSayisi int,
+kitapAdi nvarchar(100) not null,
+yayinTarihi nvarchar(100)
+);
+
+create table kitap_kategori(
+ISBN int  foreign key(ISBN) references kitaplar(ISBN),
+kategoriNo int foreign key (kategoriNo) references kategoriler(kategoriNo)
+);
+
+use kutuphane;
+
+create table kutuphane(
+kutuphaneNO int not null identity(1,1) primary key,
+kutuphaneIsmi nvarchar(100) not null,
+aciklama nvarchar(150),
+adresNo int foreign key (adresNo) references Adresler(adresNo)
+);
+
+create table kitap_kutuphane(
+kitapNo int not null,
+kutuphaneNo int not null,
+miktar int,
+primary key (kitapNo, kutuphaneNo),
+foreign key (kitapNo)references kitaplar(ISBN),
+foreign Key (kutuphaneNo) references kutuphane(kutuphaneNo)
+);
+
+use kutuphane;
+
+create table kitap_yazar(
+kitapNo int not null,
+yazarNo int not null,
+primary key(kitapNo,yazarNo),
+foreign key (kitapNo) references kitaplar(ISBN),
+foreign key (yazarNo) references yazarlar(yazarNo)
+);
