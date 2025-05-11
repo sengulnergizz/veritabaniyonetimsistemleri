@@ -1,0 +1,74 @@
+3. soru
+
+SELECT DISTINCT A.*
+FROM Arac A
+JOIN Satis S ON A.Aracno = S.Aracno
+JOIN Alim AL ON A.Aracno = AL.Aracno
+WHERE S.Sfiyat < AL.Afiyat;
+
+
+4. soru
+SELECT M.*, 'Satis' AS Islem
+FROM Satis S
+JOIN Arac A ON S.Aracno = A.Aracno
+JOIN Musteri M ON S.Mno = M.Mno
+WHERE A.Marka LIKE '%Opel%'
+
+SELECT M.*, 'Alim' AS Islem
+FROM Alim AL
+JOIN Arac A ON AL.Aracno = A.Aracno
+JOIN Musteri M ON AL.Mno = M.Mno
+WHERE A.Marka LIKE '%Opel%';
+
+
+5.soru
+SELECT A.Marka, A.Model, A.Fiyat AS Arac_Fiyati, S.Sfiyat AS Satis_Fiyati
+FROM Arac A
+JOIN Satis S ON A.Aracno = S.Aracno
+WHERE A.Fiyat > 20000;
+
+
+6.soru
+SELECT M.Madres, SUM(S.Sfiyat) AS ToplamSatis
+FROM Satis S
+JOIN Musteri M ON S.Mno = M.Mno
+WHERE M.Madres LIKE '%Turhal%' OR M.Madres LIKE '%Amasya%'
+GROUP BY M.Madres
+ORDER BY ToplamSatis DESC;
+
+
+7.soru
+SELECT * FROM Musteri
+WHERE Mno NOT IN (SELECT Mno FROM Satis)
+AND Mno NOT IN (SELECT Mno FROM Alim);
+
+
+8.soru
+SELECT M.*
+FROM Satis S
+JOIN Musteri M ON S.Mno = M.Mno
+WHERE MONTH(CONVERT(date, S.Sat_tarih, 104)) IN (5, 6);
+
+
+9.soru
+SELECT AL1.Mno, M.Madi, M.Msoyadi, A.Marka
+FROM Alim AL1
+JOIN Arac A ON AL1.Aracno = A.Aracno
+JOIN Musteri M ON AL1.Mno = M.Mno
+WHERE A.Marka IN (
+    SELECT Marka
+    FROM Arac
+    GROUP BY Marka
+    HAVING COUNT(*) > 1
+);
+
+
+
+10. soru
+SELECT A.Marka, S.Sfiyat, M.Madi, M.Msoyadi
+FROM Satis S
+JOIN Arac A ON S.Aracno = A.Aracno
+JOIN Musteri M ON S.Mno = M.Mno
+WHERE S.Sfiyat = (
+    SELECT MAX(Sfiyat) FROM Satis
+);
