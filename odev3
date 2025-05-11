@@ -1,0 +1,20 @@
+1.soru
+SELECT M.*
+FROM Satis S
+JOIN Musteri M ON S.Mno = M.Mno 
+WHERE S.Aracno = (
+    SELECT Aracno
+    FROM Satis
+    WHERE Mno = (
+        SELECT Mno FROM Musteri
+        WHERE Madi = 'Turgut' AND Msoyadi = 'Özseven'
+    )
+)
+AND S.Mno != (
+    SELECT Mno FROM Musteri
+    WHERE Madi = 'Turgut' AND Msoyadi = 'Özseven'
+);
+2. soru
+SELECT DISTINCT A.*
+FROM Arac A
+JOIN Satis S ON A.Aracno = S.Aracno;
